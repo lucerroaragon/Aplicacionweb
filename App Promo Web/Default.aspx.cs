@@ -13,5 +13,10 @@ namespace App_Promo_Web
         {
 
         }
+
+        protected void btnVerificar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
