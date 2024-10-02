@@ -23,11 +23,17 @@ namespace Negocio
       public AccesoDatos()
       {
             //conexion = new SqlConnection("Server=localhost,1433; Database=CATALOGO_P3_DB; User Id=sa; Password=17513169Marie..; TrustServerCertificate=True;");
-            conexion = new SqlConnection("server=.\\SQLExpress; database=CATALOGO_P3_DB; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLExpress; database=PROMOS_DB; integrated security=true");
             comando = new SqlCommand();
       }
 
-      public void setearConsulta(string consulta)
+        public void setearProcedimiento(string sp)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = sp;
+        }
+
+        public void setearConsulta(string consulta)
       {
           comando.CommandType = System.Data.CommandType.Text;
           comando.CommandText = consulta;

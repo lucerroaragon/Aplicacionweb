@@ -7,9 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace App_Promo_Web
 {
-    public partial class About : Page
+    public partial class FormularioCliente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
         {
 
         }

@@ -21,7 +21,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select A.Id IdArticulo , A.Codigo, A.Nombre, M.Descripcion Marca,M.id IdMarca, C.Descripcion Categoria, C.Id IdCategoria, A.Precio, A.Descripcion, I.ImagenUrl  from ARTICULOS A INNER JOIN MARCAS M ON A.IdMarca = M.Id INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datos.setearProcedimiento("storedListarArticulos");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -92,6 +92,46 @@ namespace Negocio
 
             imagenNegocio.agregar(idNuevo, nuevo.imagen.Url);
             
+        }
+
+        public Articulo obtenerArticulo(int id)
+        {
+            Articulo aux = new Articulo();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT A.Id AS IdArticulo, A.Codigo, A.Nombre, M.Descripcion AS Marca, M.Id AS IdMarca, C.Descripcion AS Categoria, C.Id AS IdCategoria, A.Precio, A.Descripcion, MAX(I.ImagenUrl) AS ImagenUrl FROM ARTICULOS A INNER JOIN MARCAS M ON A.IdMarca = M.Id INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo WHERE A.Id = @Id GROUP BY A.Id, A.Codigo, A.Nombre, M.Descripcion, M.Id, C.Descripcion, C.Id, A.Precio, A.Descripcion");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    aux.IdArticulo = (int)datos.Lector["IdArticulo"];
+                    aux.CodArticulo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.marca = new Marca();
+                    aux.marca.IdMarca = (int)datos.Lector["IdMarca"];
+                    aux.marca.Nombre = (string)datos.Lector["Marca"];
+                    aux.categoria = new Categoria();
+                    aux.categoria.IdCategoria = (int)datos.Lector["IdCategoria"];
+                    aux.categoria.Nombre = (string)datos.Lector["Categoria"];
+                    aux.imagen = new Imagen();
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.imagen.Url = (string)datos.Lector["ImagenUrl"];
+                }
+                return aux;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
         public void modificar ( Articulo arti)
         {
