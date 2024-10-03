@@ -19,3 +19,16 @@ textarea {
         padding: 0;
     }
 }
+
+<style >
+.card {
+    display: flex;
+    flex-direction: column; /* Permite que los elementos dentro de la card se alineen en columna */
+    height: 100%; /* Asegura que la card ocupe todo el espacio disponible */
+}
+
+.card-body {
+    flex-grow: 1; /* Permite que el cuerpo de la card crezca para ocupar el espacio disponible */
+}
+
+</style >

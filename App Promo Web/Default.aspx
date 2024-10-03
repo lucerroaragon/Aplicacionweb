@@ -23,7 +23,8 @@
                 <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             </div>
             <asp:Button ID="btnVerificar" runat="server" Text="Verificar" CssClass="btn btn-primary" OnClick="btnVerificar_Click" />
-        </div>
+      
+            </div>
     </div>
 
 </asp:Content>

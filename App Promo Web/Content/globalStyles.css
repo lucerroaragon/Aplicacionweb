@@ -1,4 +1,5 @@
-﻿
+﻿/* globalStyle.css */
+
 html, body {
     height: 100vh;
     margin: 0;
@@ -7,10 +8,19 @@ html, body {
 .body-content {
     min-height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; /* Mantén esto */
+    justify-content: flex-start; /* Cambia esto para alinear desde arriba */
 }
 
 footer {
     margin-top: auto;
+}
+
+/* Asegúrate de que el contenedor de tarjetas tenga suficiente espacio */
+#articulosContainer {
+    width: 100%; /* Ancho completo */
+    display: flex; /* Usar flexbox */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    justify-content: space-between; /* Espacio entre las tarjetas */
+    margin-top: 20px; /* Ajusta según sea necesario */
 }
