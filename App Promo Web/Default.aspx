@@ -16,15 +16,16 @@
     </div>
 
     <div class="row h-100 d-flex align-items-center justify-content-center p-5 ">
-        <div class="col-12 col-md-6 col-lg-4 p-4">
-            <div class="mb-3">
-                <label class="form-label">Ingrese el Codigo alfanumerico</label>
-                <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control" placeholder="Codigo" required></asp:TextBox>
-                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-            </div>
-            <asp:Button ID="btnVerificar" runat="server" Text="Verificar" CssClass="btn btn-primary" OnClick="btnVerificar_Click" />
-      
-            </div>
+    <div class="col-12 col-md-6 col-lg-4 p-4">
+        <div class="mb-3">
+            <label class="form-label">Ingrese el Codigo alfanumerico</label>
+            <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control" placeholder="Codigo" required></asp:TextBox>
+            <asp:Label ID="lblError" runat="server" CssClass="text-danger" Text=""></asp:Label>
+        </div>
+        <asp:Button ID="btnVerificar" runat="server" Text="Verificar" CssClass="btn btn-primary" OnClick="btnVerificar_Click" />
     </div>
+</div>
+
+  
 
 </asp:Content>
