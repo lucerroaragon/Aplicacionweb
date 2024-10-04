@@ -20,7 +20,7 @@ textarea {
     }
 }
 
-<style >
+
 .card {
     display: flex;
     flex-direction: column; /* Permite que los elementos dentro de la card se alineen en columna */
@@ -31,4 +31,9 @@ textarea {
     flex-grow: 1; /* Permite que el cuerpo de la card crezca para ocupar el espacio disponible */
 }
 
-</style >
+.mt h2{
+    background-color: aqua
+
+
+
+}
