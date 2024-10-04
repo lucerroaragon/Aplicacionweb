@@ -1,39 +1,130 @@
-﻿/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+﻿
+/* Default */
+
+h2 {
+    color: #007bff; 
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    margin-top:60px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+
+p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .body-content {
-        padding: 0;
+
+
+.font-weight-bold {
+    font-weight: bold;
+    color: #007bff;
+}
+
+
+ul {
+    margin-left: 20px;
+    margin-bottom: 1.5rem;
+}
+
+    ul li {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 0.8rem;
     }
+
+
+
+label.form-label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
 }
 
+input.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    background-color:gainsboro;
+}
+
+button.btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    justify-content:center;
+}
+
+
+/* Catalogo articulos*/
+
+.mt-4 {
+    margin-top: 60px;
+}
 
 .card {
     display: flex;
-    flex-direction: column; /* Permite que los elementos dentro de la card se alineen en columna */
-    height: 100%; /* Asegura que la card ocupe todo el espacio disponible */
+    flex-direction: column; 
+    height: 100%; 
 }
 
 .card-body {
-    flex-grow: 1; /* Permite que el cuerpo de la card crezca para ocupar el espacio disponible */
+    flex-grow: 1; 
 }
 
-.mt h2{
-    background-color: aqua
+
+/* FormularioCliente*/
 
 
+.form-header {
+    margin-bottom: 20px;
 
 }
+
+.form-title {
+    font-size: 2rem;
+    color: #007bff; 
+    
+}
+h1 {
+    margin-top: 80px;
+}
+
+.form-description {
+    font-size: 1.1rem;
+    color: #333; 
+    margin-bottom: 30px;
+}
+
+.form-label {
+    color: #ffcc00;
+}
+
+.form-control {
+    background-color: #343a40; 
+    border: 2px solid #6cb2eb; 
+    color: #333; 
+}
+
+    .form-control:focus {
+        border-color: #007bff; 
+        box-shadow: none;
+    }
+
+.btn-primary {
+    background-color: #6cb2eb; 
+    border: 2px solid #007bff;
+    color: white; 
+    font-weight:bold
+}
+
+    .btn-primary:hover {
+        background-color: #007bff; 
+        border: 2px solid #6cb2eb;
+    }
+
+

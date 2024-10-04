@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioCliente.aspx.cs" Inherits="App_Promo_Web.FormularioCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="form-header text-center">
+        <h1 class="form-title">Completa tu información</h1>
+        <p class="form-description">Por favor, completa los datos a continuación para procesar el canje de tu artículo seleccionado.</p>
+    </div>
+
     <div class="row g-3">
         <div class="col-md-1">
             <label for="txtId" class="form-label">ID</label>
