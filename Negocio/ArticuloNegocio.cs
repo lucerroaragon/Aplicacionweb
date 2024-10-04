@@ -21,30 +21,31 @@ namespace Negocio
 
             try
             {
-                datos.setearProcedimiento("storedListarArticulos");
+                datos.setearProcedimiento("storedListarArticulo");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
 
-                    aux.IdArticulo = (int)datos.Lector["IdArticulo"];
-                    aux.CodArticulo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.IdArticulo = (int)datos.Lector["IdArticulo"]; 
+                    aux.CodArticulo = (string)datos.Lector["Codigo"]; 
+                    aux.Nombre = (string)datos.Lector["Nombre"]; 
                     aux.marca = new Marca();
-                    aux.marca.IdMarca = (int)datos.Lector["IdMarca"];
-                    aux.marca.Nombre = (string)datos.Lector["Marca"];
+                    aux.marca.IdMarca = (int)datos.Lector["IdMarca"]; 
+                    aux.marca.Nombre = (string)datos.Lector["Marca"]; 
                     aux.categoria = new Categoria();
-                    aux.categoria.IdCategoria = (int)datos.Lector["IdCategoria"];
-                    aux.categoria.Nombre = (string)datos.Lector["Categoria"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.categoria.IdCategoria = (int)datos.Lector["IdCategoria"]; 
+                    aux.categoria.Nombre = (string)datos.Lector["Categoria"]; 
+                    aux.Precio = (decimal)datos.Lector["Precio"]; 
+                    aux.Descripcion = (string)datos.Lector["Descripcion"]; 
                     aux.imagen = new Imagen();
-                    if (!(datos.Lector["ImagenUrl"]is DBNull))
-                        aux.imagen.Url = (string)datos.Lector["ImagenUrl"];
+
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.imagen.Url = (string)datos.Lector["ImagenUrl"]; 
 
                     lista.Add(aux);
-            }
+                }
 
 
                 return lista;
@@ -68,7 +69,8 @@ namespace Negocio
             Imagen img = new Imagen();
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion,Precio,IdMarca, IdCategoria) VALUES (@Codigo, @Nombre, @Descripcion,@Precio, @IdMarca, @IdCategoria)");
+                datos.setearConsulta("INSERT INTO ARTICULOS (Id,Codigo, Nombre, Descripcion,Precio,IdMarca, IdCategoria) VALUES (@Id,@Codigo, @Nombre, @Descripcion,@Precio, @IdMarca, @IdCategoria)");
+                datos.setearParametro("@Id", nuevo.IdArticulo);
                 datos.setearParametro("@Codigo", nuevo.CodArticulo);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);

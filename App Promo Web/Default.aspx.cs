@@ -22,14 +22,15 @@ namespace App_Promo_Web
             Vouchers voucher = new Vouchers();
             VouchersNogocio voucherNegocio = new VouchersNogocio();
             voucher = voucherNegocio.obtenerVoucher(txtCodigo.Text);
-            if (voucher.CodigoVoucher != null)
+
+            if (voucher != null && voucher.CodigoVoucher != null)  // Verifica si se encontró el voucher
             {
-                if (voucher.IdCliente == 0)
+                if (voucher.IdCliente == null)  // Verifica si el voucher aún no ha sido utilizado (IdCliente es null)
                 {
                     Session.Add("IdVoucher", txtCodigo.Text);
-                    Response.Redirect("FormularioCliente.aspx");
+                    Response.Redirect("CatalogoArticulos.aspx"); // Redirige a la página del catálogo
                 }
-                else if(voucher.IdCliente > 0)
+                else if (voucher.IdCliente > 0)  // Verifica si el voucher ya ha sido utilizado (IdCliente tiene un valor)
                 {
                     Session.Add("IdVoucher", txtCodigo.Text);
                     Response.Redirect("VoucherCanjeado.aspx");
@@ -39,8 +40,9 @@ namespace App_Promo_Web
             {
                 lblError.Text = "Voucher no encontrado";
             }
-
-
         }
+
+
+
     }
 }
