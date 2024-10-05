@@ -24,18 +24,18 @@ namespace App_Promo_Web
             foreach (var articulo in articulos)
             {
                 string cardHtml = $@"
-        <div class='col-md-4 mb-4'>
-            <div class='card h-100'> <!-- Clase h-100 añadida aquí -->
-                <img src='{articulo.imagen?.Url ?? "default.jpg"}' class='card-img-top' alt='{articulo.Nombre}'>
-                <div class='card-body'>
-                    <h5 class='card-title'>{articulo.Nombre}</h5>
-                    <p class='card-text'>{articulo.Descripcion}</p>
-                    <a href='FormularioCliente.aspx?IdArticulo={articulo.IdArticulo}' class='btn btn-primary'>Canjear</a>
+            <div class='col-md-4 mb-4'>
+                <div class='card h-100'> <!-- Clase h-100 añadida aquí -->
+                    <img src='{articulo.imagen?.Url ?? "default.jpg"}' class='card-img-top' alt='{articulo.Nombre}'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>{articulo.Nombre}</h5>
+                        <p class='card-text'>{articulo.Descripcion}</p>
+                        <a href='FormularioCliente.aspx?IdArticulo={articulo.IdArticulo}' class='btn btn-primary'>Canjear</a>
+                    </div>
                 </div>
-            </div>
-        </div>";
+            </div>";
 
-                articulosContainer.Controls.Add(new LiteralControl(cardHtml));
+            articulosContainer.Controls.Add(new LiteralControl(cardHtml));
             }
         }
 

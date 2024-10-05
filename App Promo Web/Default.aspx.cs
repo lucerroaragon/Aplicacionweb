@@ -32,7 +32,7 @@ namespace App_Promo_Web
                 }
                 else if (voucher.IdCliente > 0)  // Verifica si el voucher ya ha sido utilizado (IdCliente tiene un valor)
                 {
-                    Session.Add("IdVoucher", txtCodigo.Text);
+                    Session.Add("IdVoucher", txtCodigo.Text); // Guardo el Id de voucher en sesión
                     Response.Redirect("VoucherCanjeado.aspx");
                 }
             }

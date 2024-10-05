@@ -15,8 +15,8 @@ namespace Negocio
             Clientes cliente = new Clientes();
             try
             {
-                datos.setearConsulta("SELECT Id, Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP FROM Clientes\r\nWHERE Id = @id");
-                datos.setearParametro("@Id", C);
+                datos.setearConsulta("SELECT Id, Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP FROM Clientes WHERE Documento = @Doc");
+                datos.setearParametro("@Doc", C);
                 datos.ejecutarLectura();
 
                 if (datos.Lector.Read())
@@ -31,6 +31,50 @@ namespace Negocio
                     cliente.CP = (int)datos.Lector["CP"];
                 }
                 return cliente;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public bool verificarCliente(string dni)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("SELECT Documento FROM Clientes WHERE Documento = @Doc");
+            datos.setearParametro("@Doc", dni);
+            datos.ejecutarLectura();
+
+            if (datos.Lector.Read())
+            {
+                return false;
+            }
+
+            return true;
+
+        }
+
+        public void guardarCliente(Clientes cliente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Clientes (Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) VALUES (@Doc, @Nom, @Ape, @Ema, @Dir, @Ciu, @CP)");
+
+                datos.setearParametro("@Doc", cliente.Documento);
+                datos.setearParametro("@Nom", cliente.Nombre);
+                datos.setearParametro("@Ape", cliente.Apellido);
+                datos.setearParametro("@Ema", cliente.Email);
+                datos.setearParametro("@Dir", cliente.Direccion);
+                datos.setearParametro("@Ciu", cliente.Ciudad);
+                datos.setearParametro("@CP", cliente.CP);
+
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

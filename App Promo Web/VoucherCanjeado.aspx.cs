@@ -24,10 +24,8 @@ namespace App_Promo_Web
 
                     if (voucher != null)
                     {
-                        var cliente = clienteNegocio.obtenerCliente(voucher.IdCliente ?? 0); // Usa 0 como valor predeterminado
+                        //var cliente = clienteNegocio.obtenerCliente(voucher.IdCliente ?? 0); // Usa 0 como valor predeterminado
                         arti = articuloNegocio.obtenerArticulo(voucher.IdArticulo ?? 0); // Usa 0 como valor predeterminado
-
-                        
                     }
                     else
                     {

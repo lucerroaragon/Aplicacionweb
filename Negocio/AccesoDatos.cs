@@ -22,8 +22,14 @@ namespace Negocio
 
       public AccesoDatos()
       {
+            //Pedro
             //conexion = new SqlConnection("Server=localhost,1433; Database=CATALOGO_P3_DB; User Id=sa; Password=17513169Marie..; TrustServerCertificate=True;");
-            conexion = new SqlConnection("server=.\\LABORATORIO3; database=PROMOS_DB; integrated security=true");
+
+            //Lu
+            //conexion = new SqlConnection("server=.\\LABORATORIO3; database=PROMOS_DB; integrated security=true");
+
+            //Maxi
+            conexion = new SqlConnection("server=.\\SQLExpress; database=PROMOS_DB; integrated security=true");
             comando = new SqlCommand();
       }
 

@@ -21,7 +21,7 @@ namespace Negocio
 
             try
             {
-                datos.setearProcedimiento("storedListarArticulo");
+                datos.setearProcedimiento("storedListarArticulos");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -135,6 +135,8 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
         public void modificar ( Articulo arti)
         {
             AccesoDatos datos = new AccesoDatos();
