@@ -79,7 +79,7 @@ namespace App_Promo_Web
                 if (clienteNegocio.verificarCliente(cliente.Documento))
                     clienteNegocio.guardarCliente(cliente);
 
-                Response.Redirect("VoucherCanjeado.aspx");
+                Response.Redirect("CanjeadoExitoso.aspx");
             }
             catch (Exception ex)
             {

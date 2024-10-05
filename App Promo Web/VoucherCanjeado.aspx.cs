@@ -11,11 +11,9 @@ namespace App_Promo_Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) 
+            if (!IsPostBack)
             {
                 VouchersNogocio voucherNegocio = new VouchersNogocio();
-                ClienteNegocio clienteNegocio = new ClienteNegocio();
-                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
                 string IdVoucher = Request.QueryString["IdVoucher"];
 
                 if (!string.IsNullOrEmpty(IdVoucher))
@@ -24,26 +22,26 @@ namespace App_Promo_Web
 
                     if (voucher != null)
                     {
-                        //var cliente = clienteNegocio.obtenerCliente(voucher.IdCliente ?? 0); // Usa 0 como valor predeterminado
-                        arti = articuloNegocio.obtenerArticulo(voucher.IdArticulo ?? 0); // Usa 0 como valor predeterminado
+                        lblError.Text = "El código de voucher ingresado ya ha sido utilizado o no existe.";
+                        lblError.Visible = true;
                     }
                     else
                     {
-                        lblError.Text = "Voucher no encontrado.";
-                        lblError.Visible = true; 
+                        // Aquí puedes mostrar información sobre el artículo canjeado si es necesario.
+                        // arti = articuloNegocio.obtenerArticulo(voucher.IdArticulo ?? 0);
                     }
                 }
                 else
                 {
-                    lblError.Text = "No se proporcionó un código de voucher valido.";
-                    lblError.Visible = true; 
+                    lblError.Text = "No se proporcionó un código de voucher válido.";
+                    lblError.Visible = true;
                 }
             }
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx"); 
+            Response.Redirect("Default.aspx");
         }
     }
 }

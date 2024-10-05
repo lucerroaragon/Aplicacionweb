@@ -72,7 +72,7 @@
         <div class="row g-4">
             <div class="md-2">
                 <p></p>
-                <asp:Button Text="Aceptar" CssClass="btn btn-primary" OnClientClick="return validar()" OnClick="btnAceptar_Click" ID="btnAceptar" runat="server" />
+                <asp:Button Text="Participar" CssClass="btn btn-primary" OnClientClick="return validar()" OnClick="btnAceptar_Click" ID="btnAceptar" runat="server" />
             </div>
         </div>
     </form>
