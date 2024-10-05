@@ -23,18 +23,23 @@ html, body {
     display: flex;
     justify-content: start;
     align-content: end;
-    width:25%;
+    width: 25%;
 }
 
-.card-text 
-{
-    width:100%;
-    height:100px;
-
+.card-text {
+    width: 100%;
+    height: 100px;
 }
+
+.form-header-fomulario-cliente {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+
 
 
 
 footer {
-    margin-top: 40px;
+    margin-top:150px;
 }

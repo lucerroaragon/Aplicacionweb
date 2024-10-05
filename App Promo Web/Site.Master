@@ -47,10 +47,10 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">Promo Gana</a>
                         </li>
-                        <%--<li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Features</a>
                         </li>
-                        <li class="nav-item">
+                        <%--<li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
                         </li>
                         <li class="nav-item">
@@ -71,7 +71,7 @@
                     <!-- Sección de información de la empresa -->
                     <div class="col-md-4 mb-3">
                         <h5>UTN TecnoloGy</h5>
-                       <p>Tu destino para lo último en tecnología. ¡Descubre la innovación hoy!</p>
+                        <p style="color:aliceblue">Tu destino para lo último en tecnología. ¡Descubre la innovación hoy!</p>
 
                     </div>
 
@@ -90,11 +90,11 @@
                     <div class="col-md-4 mb-3">
                         <h5>Contáctanos</h5>
                         <ul class="list-unstyled">
-                            <li><i class="bi bi-geo-alt-fill"></i>Dirección: Calle Falsa 123</li>
-                            <li><i class="bi bi-telephone-fill"></i>Teléfono: +123 456 789</li>
-                            <li><i class="bi bi-envelope-fill"></i>Correo: info@miempresa.com</li>
+                            <li style="color:aliceblue"><i class="bi bi-geo-alt-fill m-3" ></i>Dirección: Calle Falsa 123</li>
+                            <li style="color:aliceblue"><i class="bi bi-telephone-fill m-3 " ></i>Teléfono: +123 456 789</li>
+                            <li="color:aliceblue"><i class="bi bi-envelope-fill m-3"></i>Correo: info@miempresa.com</li>
                         </ul>
-                        <div class="mt-3">
+                        <div class="mt-3 text-center" style="margin-right:50px">
                             <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
                             <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
