@@ -24,5 +24,7 @@ namespace Dominio
         public Categoria categoria { get; set; }
         public Imagen imagen { get; set; }
 
+        public List<string> imagenes { get; set; }
+
     }
 }

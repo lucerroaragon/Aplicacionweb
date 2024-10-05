@@ -8,30 +8,30 @@ using System.Data.SqlClient;
 namespace Negocio
 {
 
-  public class AccesoDatos
+    public class AccesoDatos
 
-  {
-      private SqlConnection conexion;
-      private SqlCommand comando;
-      private SqlDataReader lector;
+    {
+        private SqlConnection conexion;
+        private SqlCommand comando;
+        private SqlDataReader lector;
 
-      public SqlDataReader Lector
-      {
-          get { return lector; }
-      }
+        public SqlDataReader Lector
+        {
+            get { return lector; }
+        }
 
-      public AccesoDatos()
-      {
+        public AccesoDatos()
+        {
             //Pedro
-            //conexion = new SqlConnection("Server=localhost,1433; Database=CATALOGO_P3_DB; User Id=sa; Password=17513169Marie..; TrustServerCertificate=True;");
+            conexion = new SqlConnection("Server=localhost,1433; Database=PROMOS_DB; User Id=sa; Password=17513169Marie..; TrustServerCertificate=True;");
 
             //Lu
-            conexion = new SqlConnection("server=.\\LABORATORIO3; database=PROMOS_DB; integrated security=true");
+            //conexion = new SqlConnection("server=.\\LABORATORIO3; database=PROMOS_DB; integrated security=true");
 
             //Maxi
-           // conexion = new SqlConnection("server=.\\SQLExpress; database=PROMOS_DB; integrated security=true");
+            // conexion = new SqlConnection("server=.\\SQLExpress; database=PROMOS_DB; integrated security=true");
             comando = new SqlCommand();
-      }
+        }
 
         public void setearProcedimiento(string sp)
         {
@@ -40,26 +40,26 @@ namespace Negocio
         }
 
         public void setearConsulta(string consulta)
-      {
-          comando.CommandType = System.Data.CommandType.Text;
-          comando.CommandText = consulta;
-      }
+        {
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = consulta;
+        }
 
-      public void ejecutarLectura()
-      {
-          comando.Connection = conexion;
-          try
-          {
-              conexion.Open();
-              lector = comando.ExecuteReader();
-          }
-          catch (Exception ex)
-          {
+        public void ejecutarLectura()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                lector = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
 
-              throw ex;
-          }
-      }
-        
+                throw ex;
+            }
+        }
+
         public void ejecutarAccion()
         {
             comando.Connection = conexion;
@@ -68,7 +68,7 @@ namespace Negocio
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -92,18 +92,18 @@ namespace Negocio
 
         public void setearParametro(string nombre, object valor)
         {
-           
-             comando.Parameters.AddWithValue(nombre,valor);
-          
+
+            comando.Parameters.AddWithValue(nombre, valor);
+
 
         }
 
-      public void cerrarConexion()
-      {
-          if (lector != null)
-              lector.Close();
-          conexion.Close();
+        public void cerrarConexion()
+        {
+            if (lector != null)
+                lector.Close();
+            conexion.Close();
 
-      }
-  }
+        }
+    }
 }

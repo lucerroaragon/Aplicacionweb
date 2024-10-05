@@ -26,27 +26,46 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    Articulo aux = new Articulo();
 
-                    aux.IdArticulo = (int)datos.Lector["IdArticulo"]; 
-                    aux.CodArticulo = (string)datos.Lector["Codigo"]; 
-                    aux.Nombre = (string)datos.Lector["Nombre"]; 
-                    aux.marca = new Marca();
-                    aux.marca.IdMarca = (int)datos.Lector["IdMarca"]; 
-                    aux.marca.Nombre = (string)datos.Lector["Marca"]; 
-                    aux.categoria = new Categoria();
-                    aux.categoria.IdCategoria = (int)datos.Lector["IdCategoria"]; 
-                    aux.categoria.Nombre = (string)datos.Lector["Categoria"]; 
-                    aux.Precio = (decimal)datos.Lector["Precio"]; 
-                    aux.Descripcion = (string)datos.Lector["Descripcion"]; 
-                    aux.imagen = new Imagen();
+                    int idArticulo = (int)datos.Lector["IdArticulo"];
+
+                    // Busca si ya existe en la lista
+                    Articulo aux = lista.FirstOrDefault(a => a.IdArticulo == idArticulo);
+
+
+                    if (aux == null)
+                    {
+                        aux = new Articulo
+                        {
+                            IdArticulo = idArticulo,
+                            CodArticulo = (string)datos.Lector["Codigo"],
+                            Nombre = (string)datos.Lector["Nombre"],
+                            marca = new Marca
+                            {
+                                IdMarca = (int)datos.Lector["IdMarca"],
+                                Nombre = (string)datos.Lector["Marca"]
+                            },
+                            categoria = new Categoria
+                            {
+                                IdCategoria = (int)datos.Lector["IdCategoria"],
+                                Nombre = (string)datos.Lector["Categoria"]
+                            },
+                            Precio = (decimal)datos.Lector["Precio"],
+                            Descripcion = (string)datos.Lector["Descripcion"],
+                            imagenes = new List<string>()
+                        };
+
+
+
+                        lista.Add(aux);
+                    }
 
                     if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        aux.imagen.Url = (string)datos.Lector["ImagenUrl"]; 
-
-                    lista.Add(aux);
+                    {
+                        string imageUrl = (string)datos.Lector["ImagenUrl"];
+                        aux.imagenes.Add(imageUrl);
+                    }
                 }
-
 
                 return lista;
             }
@@ -58,14 +77,13 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+;        }
 
-        }
-
-        public void agregar ( Articulo nuevo)
+        public void agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             ImagenNegocio imagenNegocio = new ImagenNegocio();
-            
+
             Imagen img = new Imagen();
             try
             {
@@ -79,7 +97,7 @@ namespace Negocio
                 datos.setearParametro("@IdCategoria", nuevo.categoria.IdCategoria);
 
                 datos.ejecutarAccion();
-                
+
             }
             catch (Exception ex)
             {
@@ -93,7 +111,7 @@ namespace Negocio
             int idNuevo = obtenerUltimoId();
 
             imagenNegocio.agregar(idNuevo, nuevo.imagen.Url);
-            
+
         }
 
         public Articulo obtenerArticulo(int id)
@@ -137,13 +155,13 @@ namespace Negocio
         }
 
 
-        public void modificar ( Articulo arti)
+        public void modificar(Articulo arti)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion ,Precio = @Precio,IdMarca = @IdMarca, IdCategoria = @IdCategoria Where Id = @IdArticulo");
-                datos.setearParametro("@Codigo",arti.CodArticulo);
+                datos.setearParametro("@Codigo", arti.CodArticulo);
                 datos.setearParametro("@Nombre", arti.Nombre);
                 datos.setearParametro("@Descripcion", arti.Descripcion);
                 datos.setearParametro("@Precio", arti.Precio);
@@ -154,7 +172,7 @@ namespace Negocio
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
-            { 
+            {
                 throw ex;
             }
             finally
@@ -176,8 +194,8 @@ namespace Negocio
 
                 throw ex;
             }
-            finally 
-            { 
+            finally
+            {
                 datos.cerrarConexion();
             }
 
@@ -202,7 +220,7 @@ namespace Negocio
         public int obtenerUltimoId()
         {
             AccesoDatos datos = new AccesoDatos();
-            int id = 0; 
+            int id = 0;
             try
             {
                 datos.setearConsulta("select top(1) id from ARTICULOS ORDER by id DESC");
@@ -237,7 +255,7 @@ namespace Negocio
             {
 
                 throw ex;
-            }  
+            }
         }
 
 
