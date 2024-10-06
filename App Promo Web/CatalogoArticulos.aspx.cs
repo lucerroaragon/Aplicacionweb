@@ -24,14 +24,12 @@ namespace App_Promo_Web
             foreach (var articulo in articulos)
 
             {
-
-
                 string carouselId = $"carousel_{articulo.IdArticulo}";
                 string carouselHtml = $@"
                 <div id='{carouselId}' class='carousel slide' data-bs-ride='carousel'>
                 <div class='carousel-inner'>";
-                 
-                for (int i = 0; i < articulo.imagenes.Count; i++) 
+
+                for (int i = 0; i < articulo.imagenes.Count; i++)
                 {
                     var imagen = articulo.imagenes[i];
                     string activeClass = i == 0 ? "active" : "";

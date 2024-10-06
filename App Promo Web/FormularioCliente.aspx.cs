@@ -31,12 +31,6 @@ namespace App_Promo_Web
                 txtDireccion.Text = cliente.Direccion;
                 txtCiudad.Text = cliente.Ciudad;
                 txtCP.Text = cliente.CP.ToString();
-                txtNombre.ReadOnly = false;
-                txtApellido.ReadOnly = false;
-                txtEmail.ReadOnly = false;
-                txtDireccion.ReadOnly = false;
-                txtCiudad.ReadOnly = false;
-                txtCP.ReadOnly = false;
             }
             else
             {
@@ -53,29 +47,40 @@ namespace App_Promo_Web
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             Page.Validate();
             if (!Page.IsValid)
                 return;
-            
+
             ClienteNegocio clienteNegocio = new ClienteNegocio();
+            VouchersNogocio voucherNegocio = new VouchersNogocio();
+
             try
             {
-
                 Clientes cliente = new Clientes();
-                cliente.Documento = txtDocumento.Text;
-                cliente.Nombre = txtNombre.Text;
-                cliente.Apellido = txtApellido.Text;
-                cliente.Email = txtEmail.Text;
-                cliente.Direccion = txtDireccion.Text;
-                cliente.Ciudad = txtCiudad.Text;
-                cliente.CP = int.Parse(txtCP.Text);
 
-                if (clienteNegocio.verificarCliente(cliente.Documento))
+                if (clienteNegocio.verificarCliente(txtDocumento.Text))
+                {
+                    cliente.Documento = txtDocumento.Text;
+                    cliente.Nombre = txtNombre.Text;
+                    cliente.Apellido = txtApellido.Text;
+                    cliente.Email = txtEmail.Text;
+                    cliente.Direccion = txtDireccion.Text;
+                    cliente.Ciudad = txtCiudad.Text;
+                    cliente.CP = int.Parse(txtCP.Text);
                     clienteNegocio.guardarCliente(cliente);
+
+                    cliente = clienteNegocio.obtenerCliente(int.Parse(txtDocumento.Text));
+                    voucherNegocio.canjearVoucher(Session["IdVoucher"].ToString(), cliente.IdCliente, int.Parse(Request.QueryString["IdArticulo"]));
+                }
+                else
+                {
+                    cliente = clienteNegocio.obtenerCliente(int.Parse(txtDocumento.Text));
+                    voucherNegocio.canjearVoucher(Session["IdVoucher"].ToString(), cliente.IdCliente, int.Parse(Request.QueryString["IdArticulo"]));
+                }
 
                 Response.Redirect("CanjeadoExitoso.aspx");
             }
@@ -84,7 +89,7 @@ namespace App_Promo_Web
 
                 throw ex;
             }
-            
+
         }
     }
 }

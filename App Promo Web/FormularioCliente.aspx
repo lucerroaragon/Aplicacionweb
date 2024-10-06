@@ -130,7 +130,7 @@
             </div>
             <div class="col-3">
                 <label for="txtApellido" class="form-label">Apellido</label>
-                <asp:TextBox runat="server" ClientIDMode="Static" ID="txtApellido" class="form-control" placeholder="apellido" />
+                <asp:TextBox runat="server" ClientIDMode="Static" ID="txtApellido" class="form-control" ReadOnly="true" placeholder="apellido" />
                 <asp:RequiredFieldValidator ErrorMessage="Apellido requerido" ControlToValidate="txtApellido" runat="server" CssClass="text-danger" />
             </div>
         </div>
@@ -138,14 +138,14 @@
         <!-- Email y Dirección -->
         <div class="col-md-6">
             <label for="txtEmail" class="form-label">Email</label>
-            <asp:TextBox runat="server" ClientIDMode="Static" ID="txtEmail" class="form-control" placeholder="email" />
+            <asp:TextBox runat="server" ClientIDMode="Static" ID="txtEmail" class="form-control" ReadOnly="true" placeholder="email" />
             <asp:RequiredFieldValidator ErrorMessage="Email requerido" ControlToValidate="txtEmail" runat="server" CssClass="text-danger" />
             <asp:RegularExpressionValidator ErrorMessage="Formato de email inválido" ControlToValidate="txtEmail" ValidationExpression="^[^\s@]+@[^\s@]+\.[^\s@]+$" runat="server" CssClass="text-danger" />
         </div>
 
         <div class="col-md-6">
             <label for="txtDireccion" class="form-label">Dirección</label>
-            <asp:TextBox runat="server" ClientIDMode="Static" ID="txtDireccion" class="form-control" placeholder="Calle y altura" />
+            <asp:TextBox runat="server" ClientIDMode="Static" ID="txtDireccion" class="form-control" ReadOnly="true" placeholder="Calle y altura" />
             <asp:RequiredFieldValidator ErrorMessage="Dirección requerida" ControlToValidate="txtDireccion" runat="server" CssClass="text-danger" />
         </div>
 
@@ -153,12 +153,12 @@
         <div class="row g-3">
             <div class="col-md-4">
                 <label for="txtCiudad" class="form-label">Ciudad</label>
-                <asp:TextBox runat="server" ClientIDMode="Static" ID="txtCiudad" class="form-control" placeholder="ciudad" />
+                <asp:TextBox runat="server" ClientIDMode="Static" ID="txtCiudad" class="form-control" ReadOnly="true" placeholder="ciudad" />
                 <asp:RequiredFieldValidator ErrorMessage="Ciudad requerida" ControlToValidate="txtCiudad" runat="server" CssClass="text-danger" />
             </div>
             <div class="col-md-2">
                 <label for="txtCP" class="form-label">Código Postal</label>
-                <asp:TextBox runat="server" ClientIDMode="Static" ID="txtCP" class="form-control" placeholder="cp" />
+                <asp:TextBox runat="server" ClientIDMode="Static" ID="txtCP" class="form-control" ReadOnly="true" placeholder="cp" />
                 <asp:RequiredFieldValidator ErrorMessage="Código Postal requerido" ControlToValidate="txtCP" runat="server" CssClass="text-danger" />
             </div>
         </div>
