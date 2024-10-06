@@ -18,13 +18,6 @@ namespace App_Promo_Web
 
         protected void txtDocumento_TextChanged(object sender, EventArgs e)
         {
-            
-
-        }
-
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
             ClienteNegocio clienteNegocio = new ClienteNegocio();
             Clientes cliente = new Clientes();
             cliente = clienteNegocio.obtenerCliente(int.Parse(txtDocumento.Text));
@@ -53,9 +46,14 @@ namespace App_Promo_Web
                 txtDireccion.ReadOnly = false;
                 txtCiudad.ReadOnly = false;
                 txtCP.ReadOnly = false;
-
-                btnValidar.Visible = false;
             }
+
+        }
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {

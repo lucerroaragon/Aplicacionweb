@@ -21,7 +21,7 @@ namespace Negocio
 
             try
             {
-                datos.setearProcedimiento("storedListarArticulo");
+                datos.setearProcedimiento("storedListarArticulos");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
