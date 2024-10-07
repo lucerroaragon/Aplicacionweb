@@ -89,6 +89,10 @@ namespace App_Promo_Web
 
                 throw ex;
             }
+            finally
+            {
+                Session.Clear();
+            }
 
         }
 
