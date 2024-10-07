@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Xml.Linq;
 using System.Net;
 using System.Security.Cryptography;
+using System.Reflection;
 
 
 namespace Negocio
@@ -22,6 +23,16 @@ namespace Negocio
             try
             {
                 datos.setearProcedimiento("storedListarArticulo");
+                /*
+                 * "Stored Procedure"
+                    create procedure storedListarArticulo as
+                    Select A.Id IdArticulo, A.Codigo, A.Nombre, M.Descripcion Marca, M.id IdMarca, C.Descripcion Categoria,
+                    C.Id IdCategoria, A.Precio, A.Descripcion, I.ImagenUrl
+                    from ARTICULOS A
+                    INNER JOIN MARCAS M ON A.IdMarca = M.Id
+                    INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id
+                    LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo
+                */
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

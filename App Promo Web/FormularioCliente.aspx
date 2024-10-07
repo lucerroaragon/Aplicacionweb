@@ -164,9 +164,13 @@
         </div>
 
         <!-- Botones -->
+
         <div class="row g-4">
-            <div class="md-2">
+            <div class="col-md-1">
                 <asp:Button Text="Aceptar" CssClass="btn btn-primary" OnClientClick="return validar()" OnClick="btnAceptar_Click" ID="btnAceptar" runat="server" />
+            </div>
+            <div class="col-md-1">
+                <asp:Button Text="Cancelar" CssClass="btn btn-primary" OnClick="btnCancelar_Click" ID="btnCancelar" runat="server" />
             </div>
         </div>
 

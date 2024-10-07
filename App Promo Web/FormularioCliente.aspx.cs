@@ -91,5 +91,11 @@ namespace App_Promo_Web
             }
 
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Default.aspx");
+        }
     }
 }
